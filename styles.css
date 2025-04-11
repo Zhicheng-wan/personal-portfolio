@@ -442,6 +442,10 @@ section h2::after {
         height: 16rem;
     }
 
+    #about-section .headshot img{
+        margin-left: -1rem;
+    }
+
     #projects-section .project-box {
         flex: 0 0 14rem;
     }
