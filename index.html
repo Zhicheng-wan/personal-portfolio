@@ -1,185 +1,388 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zhicheng Wang Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Shadows+Into+Light&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-    <!-- Link Swiper's CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zhicheng Wang | Portfolio</title>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"/>
+
+  <style>
+    /* ---------- Base ---------- */
+    *, *::before, *::after { box-sizing: border-box; }
+    :root{
+      --primary:#6366f1; --primary-dark:#4f46e5; --secondary:#f1f5f9;
+      --text:#0f172a; --muted:#64748b; --muted-2:#94a3b8;
+      --bg:#ffffff; --bg-2:#f8fafc; --border:#e2e8f0;
+      --grad-1: linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+      --shadow-md:0 4px 6px -1px rgb(0 0 0 / .1),0 2px 4px -2px rgb(0 0 0 / .1);
+      --shadow-lg:0 10px 15px -3px rgb(0 0 0 / .1),0 4px 6px -4px rgb(0 0 0 / .1);
+      --shadow-xl:0 20px 25px -5px rgb(0 0 0 / .1),0 8px 10px -6px rgb(0 0 0 / .1);
+    }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text); background:var(--bg); line-height:1.6;
+    }
+    a{ color:inherit; text-decoration:none; }
+    img{ display:block; max-width:100%; height:auto; }
+
+    /* ---------- Nav ---------- */
+    nav{
+      position:fixed; inset:0 0 auto 0; background:rgba(248,250,252,.8);
+      backdrop-filter: blur(12px); border-bottom:1px solid var(--border);
+      z-index:50; padding:.9rem 0;
+    }
+    .nav-wrap{
+      max-width:1200px; margin:0 auto; padding:0 2rem;
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .logo{ font-family:"Space Grotesk", sans-serif; font-weight:700; font-size:1.25rem; color:var(--primary); }
+    .logo:hover{ color:var(--primary-dark); }
+    .nav-links{ display:flex; gap:1.5rem; list-style:none; }
+    .nav-links a{ font-weight:500; color:var(--muted); position:relative; }
+    .nav-links a::after{
+      content:""; position:absolute; left:0; bottom:-4px; width:0; height:2px; background:var(--primary); transition:width .25s ease;
+    }
+    .nav-links a:hover{ color:var(--primary); }
+    .nav-links a:hover::after{ width:100%; }
+
+    /* ---------- Sections ---------- */
+    section{ padding:5.5rem 0; }
+    .container{ max-width:1200px; margin:0 auto; padding:0 2rem; }
+
+    /* ---------- Hero ---------- */
+    .hero{
+      min-height:100vh; display:grid; place-items:center; background:linear-gradient(135deg,#f8fafc 0%, #e2e8f0 100%);
+      position:relative; overflow:hidden; padding-top:5rem;
+    }
+    .hero::before{
+      content:""; position:absolute; top:-50%; right:-40%; width:80vmax; height:80vmax;
+      background: radial-gradient(circle, rgba(99,102,241,.12) 0%, transparent 60%);
+      animation:float 20s ease-in-out infinite;
+    }
+    @keyframes float { 0%,100%{transform:translateY(0) rotate(0)} 50%{transform:translateY(-16px) rotate(180deg)} }
+
+    .hero-grid{
+      width:100%; display:grid; grid-template-columns:1.1fr .9fr; gap:4rem; align-items:center; position:relative; z-index:1;
+    }
+    .hero h1{
+      font-family:"Space Grotesk", sans-serif; font-size:3.1rem; line-height:1.15; margin:.25rem 0 1rem;
+    }
+    .highlight {
+        background: none;
+        -webkit-background-clip: initial;
+        background-clip: initial;
+        -webkit-text-fill-color: initial;
+        color: #fff; 
+    }
+    .subtitle{ color:var(--muted); font-weight:500; margin-bottom:1rem; }
+    .desc{ color:var(--muted-2); font-size:1.05rem; margin-bottom:1.5rem; }
+
+    .socials{ display:flex; gap:.8rem; margin-top:1.25rem; }
+    .sbtn{
+      width:46px; height:46px; display:inline-flex; align-items:center; justify-content:center;
+      border:2px solid var(--border); background:#fff; border-radius:12px; color:var(--muted); transition:all .25s ease;
+    }
+    .sbtn:hover{ background:var(--primary); color:#fff; border-color:var(--primary); transform:translateY(-2px); box-shadow:var(--shadow-lg); }
+
+    .profile-wrap{ position:relative; width:360px; max-width:100%; margin-inline:auto; }
+    .profile-frame{
+      border-radius:24px; overflow:hidden; border:6px solid #fff; box-shadow:var(--shadow-xl);
+      background:#fff;
+    }
+    .profile-glow{
+      content:""; position:absolute; inset:-20px; border-radius:30px; background:linear-gradient(135deg,#f093fb 0%, #f5576c 100%);
+      filter:blur(22px); opacity:.28; z-index:-1;
+    }
+
+    /* ---------- Section headers ---------- */
+    .sec-head{ text-align:center; margin-bottom:3rem; }
+    .sec-title{ font-family:"Space Grotesk",sans-serif; font-size:2.4rem; margin:0 0 .75rem; }
+    .sec-sub{ color:var(--muted-2); max-width:680px; margin:0 auto; }
+
+    /* ---------- Projects ---------- */
+    .projects{ background:var(--bg-2); }
+    .cat{ margin-top:2.5rem; }
+    .cat-title{ text-align:center; font-weight:700; margin-bottom:1.5rem; color:var(--text); }
+
+    .grid{
+      display:grid; gap:1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+    .card{
+      background:#fff; border:1px solid var(--border); border-radius:16px; padding:1.25rem; box-shadow:var(--shadow-md);
+      transition:transform .25s ease, box-shadow .25s ease; color:inherit; display:block;
+    }
+    .card:hover{ transform:translateY(-6px); box-shadow:var(--shadow-xl); }
+    .card::before{
+      content:""; display:block; height:4px; width:100%; background:var(--grad-1); border-radius:8px; margin:-1.25rem 0 1rem; opacity:.85;
+    }
+    .thumb{
+      width:100%; height:200px; border-radius:12px; overflow:hidden; background:#eef2f7; margin-bottom:1rem; display:flex; align-items:center; justify-content:center;
+    }
+    .thumb img{ width:100%; height:100%; object-fit:cover; }
+    .card h4{ font-size:1.1rem; margin:.25rem 0 .5rem; }
+    .card p{ color:var(--muted); font-size:.95rem; margin:0 0 .75rem; }
+    .tags{ display:flex; flex-wrap:wrap; gap:.4rem; }
+    .tag{ background:var(--secondary); color:var(--muted); font-weight:600; font-size:.75rem; padding:.25rem .6rem; border-radius:999px; }
+
+    /* ---------- Skills ---------- */
+    .skills-grid{
+      display:grid; gap:1rem; max-width:880px; margin:0 auto;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    }
+    .skill{
+      background:#fff; border:1px solid var(--border); border-radius:16px; padding:1.4rem .75rem; text-align:center; box-shadow:var(--shadow-md);
+      transition:transform .2s ease, box-shadow .2s ease;
+    }
+    .skill:hover{ transform:translateY(-3px); box-shadow:var(--shadow-lg); }
+    .skill i{ font-size:2rem; color:var(--primary); margin-bottom:.5rem; display:block; }
+    .skill span{ font-weight:600; font-size:.9rem; }
+
+    /* ---------- Contact ---------- */
+    .contact{ background:var(--bg-2); text-align:center; }
+    .soon{ color:var(--muted); font-style:italic; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 900px){
+      .hero{ padding-top:6rem; }
+      .hero-grid{ grid-template-columns:1fr; gap:2rem; text-align:center; }
+      .profile-wrap{ width:260px; }
+      .sec-title{ font-size:2rem; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="left">
-                <a href="#about-section">Zhicheng Wang</a>
-            </div>
-            <div class="right">
-                <a href="#about-section">About</a>
-                <!-- <a href="#experience-section">Experience</a> -->
-                <a href="#projects-section">Projects</a>
-                <a href="#skills-section">Skills</a>
-                <a href="#leave-message-section">Leave a Message!</a>
-            </div>
-        </nav>
-    </header>
-    <section id="about-section">
-        <h2>Hi! I'm Zhicheng Wang!</h2>
-        <div class="headshot">
-            <picture>
-                <source srcset="images/webp/headshot.webp" type="image/webp">
-                <img src="images/headshot.png" alt="headshot">
-            </picture>
+  <!-- Nav -->
+  <nav>
+    <div class="nav-wrap">
+      <a href="#top">Zhicheng&nbsp;Wang</a>
+      <ul class="nav-links">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero / About -->
+  <main id="top" class="hero">
+    <div class="container hero-grid" id="about">
+      <div>
+        <p class="subtitle">Computer Science • UC San Diego</p>
+        <h1>Hi! I’m Zhicheng&nbsp;Wang</h1>
+        <p class="desc">
+          First Year Masters passionate about ML, LLMs, and AI applications. I’m eager to
+          explore innovative ways to apply cutting-edge technology to real-world problems.
+        </p>
+        <div class="socials">
+          <a class="sbtn" href="https://www.linkedin.com/in/jackson-wang1/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a class="sbtn" href="https://github.com/Zhicheng-wan" target="_blank" rel="noopener" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a class="sbtn" href="#" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
         </div>
-        <div class="bio">
+      </div>
+
+      <div class="profile-wrap">
+        <div class="profile-glow"></div>
+        <div class="profile-frame">
+          <!-- Keep your existing headshot with webp fallback -->
+          <picture>
+            <source srcset="images/webp/headshot.webp" type="image/webp"/>
+            <img src="images/headshot.jpg" alt="Zhicheng Wang headshot"/>
+          </picture>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Projects -->
+  <section id="projects" class="projects">
+    <div class="container">
+      <div class="sec-head">
+        <h2 class="sec-title">Featured Projects</h2>
+        <p class="sec-sub">A showcase of my work in software development and academic research</p>
+      </div>
+
+      <!-- Software -->
+      <div class="cat">
+        <h3 class="cat-title">Software</h3>
+        <div class="grid">
+            <!-- POP MART E-commerce App -->
+            <a class="card" href="https://ordering-app-sepia.vercel.app/" target="_blank" rel="noopener">
+            <div class="thumb">
+                <!-- Use your real screenshots; falls back to PNG if WebP not supported -->
+                <picture>
+                <source srcset="images/webp/Popmart.webp" type="image/webp"/>
+                <img src="images/Popmart.png" alt="POP MART E-commerce App screenshot"/>
+                </picture>
+            </div>
+            <h4>POP MART E-commerce App</h4>
             <p>
-                Hello! I’m Zhicheng, a recent grad in mathematics and computer science at the University of 
-                California, San Diego. I’m passionate about ML, LLMs and the application of Artificial Intelligence, and I’m eager to 
-                explore innovative ways to apply my skills and knowledge.
+                Shipped a POP MART–inspired e-commerce app built with Next.js, MongoDB, and NextAuth.
+                It features a full-bleed video hero, polished product cards, a persistent cart (guest → server sync),
+                and an admin dashboard for users/products with image uploads and role management.
             </p>
-            <br>
-        </div>
-        <div class="social-links">
-            <a target="_blank">
-                <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/jackson-wang1/" target="_blank">
-                <i class="fa-brands fa-linkedin"></i>
-            </a>
-            <a href="https://github.com/Zhicheng-wan" target="_blank">
-                <i class="fa-brands fa-github"></i>
-            </a>
-        </div>
-    </section>
-    <div class="divider"></div>
-    <section id="projects-section">
-        <h2>Projects</h2>
-    
-        <!-- Software Projects Subsection -->
-        <div class="project-subsection">
-            <h3>Software</h3>
-            <div #swiperRef="" class="swiper card-swiper">
-                <div class="swiper-wrapper">
-                
-                <div class="swiper-slide">
-                    <a href="https://github.com/Zhicheng-wan/2D-Game" target="_blank" class="project-box">
-                        <picture>
-                            <source srcset="images/webp/2D_game.webp" type="image/webp" >
-                            <img src="images/2D_Game.png" alt="2D Game" >
-                        </picture>
-                        <h4>2D Platform Game</h4>
-                        <h5><em>Independently developed a 2D platformer game in Unity using C#, featuring player movement, jumping, and attack mechanics, as well as enemy AI with patrol and attack logic.</em></h5>
-                    </a>
-                </div>
-
-                <div class="swiper-slide">
-                    <a href="https://github.com/Zhicheng-wan/cse110-sp23-group30?tab=readme-ov-file" target="_blank" class="project-box">
-                        <picture>
-                            <source srcset="images/webp/BlueMoon.webp" type="image/webp" >
-                            <img src="images/BlueMoon.png" alt="2D Game" >
-                        </picture>
-                        <h4>Blue Moon Express</h4>
-                        <h5><em>An interactive web application that allows users to customize their orders from Panda Express, for a fun, fortune-telling experience at the end. The application provides a user-friendly interface where users can easily select their preferred items from the Panda Express menu.</em></h5>
-                    </a>
-                </div>
-                
-                </div>
+            <div class="tags">
+                <span class="tag">Next.js</span>
+                <span class="tag">MongoDB</span>
+                <span class="tag">NextAuth</span>
+                <span class="tag">Admin</span>
             </div>
-        </div>
+            </a>
 
-        <div class="project-subsection">
-            <h3>Academic</h3>
-            <div #swiperRef="" class="swiper card-swiper">
-                <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <a href="pdfs/GNN-Project.pdf" target="_blank" class="project-box">
-                        <picture>
-                            <source srcset="images/webp/GNN.webp" type="image/webp" >
-                            <img src="images/GNN.png" alt="GNN Project" >
-                        </picture>
-                        <h4>Graph-Based Reaction Prediction with 3D-Enhanced Graph Neural Network</h4>
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a href="pdfs/BeerAdvocatePrediction.pdf" target="_blank" class="project-box">
-                        <picture>
-                            <source srcset="images/webp/BeerAdvocate.webp" type="image/webp">
-                            <img src="images/BeerAdvocate.png" alt="BeerAdvocate">
-                        </picture>
-                        <h4>Prediction of Ratings Using BeerAdvocate Dataset</h4>
-                        <h5><em>Text Mining, Machine Learning, Optimization</em></h5>
-                        <p></p>
-                    </a>
-                </div>
-
-                <div class="swiper-slide">
-                    <a href="pdfs/NN.pdf" target="_blank" class="project-box">
-                        <picture>
-                            <source srcset="images/webp/NN.webp" type="image/webp">
-                            <img src="images/NN.png" alt="Chibi Luffy">
-                        </picture>
-                        <h4>Optimizing Nearest Neighbor Classification on MNIST: A Prototype Selection and Clustering Approach</h4>
-                        <h5><em>Nearest Neighbor, MNIST</em></h5>
-                        <p></p>
-                    </a>
-                </div>
-
-                <div class="swiper-slide">
-                    <a href="pdfs/CoordDescent.pdf" target="_blank" class="project-box">
-                        <picture>
-                            <source srcset="images/webp/CoordDescent.webp" type="image/webp">
-                            <img src="images/CoordDescent.png" alt="Github Issues">
-                        </picture>
-                        <h4>Adaptive Coordinate Descent for High-Dimensional Logistic Regression: A Comparative
-                            Study</h4>
-                        <h5><em>Coordinate Descent, Machine Learning</em></h5>
-                        <p></p>
-                    </a>
-                </div>
-        
-                <div class="swiper-slide">
-                    <a href="pdfs/Transformer.pdf" target="_blank" class="project-box">
-                        <picture>
-                            <source srcset="images/webp/Transformer.webp" type="image/webp">
-                            <img src="images/Transformer.png" alt="Functional Adventure">
-                        </picture>
-                        <h4>Transformer Architectures for Speech Classification and
-                            Language Modeling</h4>
-                        <h5><em>Transformer, Attention, NLP</em></h5>
-                        <p></p>
-                    </a>
-                </div>
-                </div>
+          <!-- 2D Platform Game -->
+          <a class="card" href="https://github.com/Zhicheng-wan/2D-Game" target="_blank" rel="noopener">
+            <div class="thumb">
+              <picture>
+                <source srcset="images/webp/2D_game.webp" type="image/webp"/>
+                <img src="images/2D_Game.png" alt="2D Platform Game cover"/>
+              </picture>
             </div>
-        </div>
-    
-    </section>    
-    <div class="divider"></div>
-    <section id="skills-section">
-        <h2>Skills</h2>
-        <div class="skills-container">
-            <i class="fa-brands fa-python"></i>
-            <i class="fa-brands fa-java"></i>
-            <i class="fa-brands fa-swift"></i>
-            <i class="fa-brands fa-figma"></i>
-            <i class="fa-brands fa-git-alt"></i>
-            <i class="fa-brands fa-github-alt"></i>
-            <i class="fa-solid fa-database"></i>
-            <i class="devicon-r-plain"></i>
-            <i class="devicon-c-plain-wordmark"></i>
-        </div>
-    </section>
-    <div class="divider"></div>
-    <section id="leave-message-section">
-        <h2>Leave a Message!</h2>
-        <p>coming soon :)</p>
-    </section>
+            <h4>2D Platform Game</h4>
+            <p>
+              Independently developed a 2D platformer game in Unity using C#, featuring player movement,
+              jumping, and attack mechanics, plus enemy AI with patrol and attack logic.
+            </p>
+            <div class="tags">
+              <span class="tag">Unity</span><span class="tag">C#</span><span class="tag">Game Dev</span>
+            </div>
+          </a>
 
+          <!-- Blue Moon Express -->
+          <a class="card" href="https://github.com/Zhicheng-wan/cse110-sp23-group30?tab=readme-ov-file" target="_blank" rel="noopener">
+            <div class="thumb">
+              <picture>
+                <source srcset="images/webp/BlueMoon.webp" type="image/webp"/>
+                <img src="images/BlueMoon.png" alt="Blue Moon Express cover"/>
+              </picture>
+            </div>
+            <h4>Blue Moon Express</h4>
+            <p>
+              Interactive web app that lets users customize Panda Express orders with a fun
+              fortune-telling experience and a user-friendly menu interface.
+            </p>
+            <div class="tags">
+              <span class="tag">JavaScript</span><span class="tag">HTML/CSS</span><span class="tag">Web App</span>
+            </div>
+          </a>
+        </div>
+      </div>
 
-  </body>
+      <!-- Academic -->
+      <div class="cat">
+        <h3 class="cat-title">Academic</h3>
+        <div class="grid">
+          <!-- GNN -->
+          <a class="card" href="pdfs/GNN-Project.pdf" target="_blank" rel="noopener">
+            <div class="thumb">
+              <picture>
+                <source srcset="images/webp/GNN.webp" type="image/webp"/>
+                <img src="images/GNN.png" alt="Graph-based GNN project"/>
+              </picture>
+            </div>
+            <h4>Graph-Based Reaction Prediction with 3D-Enhanced GNN</h4>
+            <p>Incorporates 3D molecular structure for improved chemical reaction prediction.</p>
+            <div class="tags"><span class="tag">GNN</span><span class="tag">PyTorch</span><span class="tag">Chemistry</span></div>
+          </a>
+
+          <!-- BeerAdvocate -->
+          <a class="card" href="pdfs/BeerAdvocatePrediction.pdf" target="_blank" rel="noopener">
+            <div class="thumb">
+              <picture>
+                <source srcset="images/webp/BeerAdvocate.webp" type="image/webp"/>
+                <img src="images/BeerAdvocate.png" alt="BeerAdvocate project"/>
+              </picture>
+            </div>
+            <h4>Prediction of Ratings Using BeerAdvocate Dataset</h4>
+            <p>Text mining + ML + optimization to predict beer ratings from reviews.</p>
+            <div class="tags"><span class="tag">Text Mining</span><span class="tag">ML</span><span class="tag">Optimization</span></div>
+          </a>
+
+          <!-- NN -->
+          <a class="card" href="pdfs/NN.pdf" target="_blank" rel="noopener">
+            <div class="thumb">
+              <picture>
+                <source srcset="images/webp/NN.webp" type="image/webp"/>
+                <img src="images/NN.png" alt="Nearest Neighbor MNIST project"/>
+              </picture>
+            </div>
+            <h4>Optimizing Nearest Neighbor on MNIST</h4>
+            <p>Prototype selection + clustering strategies to speed up NN classification.</p>
+            <div class="tags"><span class="tag">MNIST</span><span class="tag">KNN</span></div>
+          </a>
+
+          <!-- Coord Descent -->
+          <a class="card" href="pdfs/CoordDescent.pdf" target="_blank" rel="noopener">
+            <div class="thumb">
+              <picture>
+                <source srcset="images/webp/CoordDescent.webp" type="image/webp"/>
+                <img src="images/CoordDescent.png" alt="Coordinate Descent project"/>
+              </picture>
+            </div>
+            <h4>Adaptive Coordinate Descent for Logistic Regression</h4>
+            <p>Comparative study on high-dimensional optimization techniques.</p>
+            <div class="tags"><span class="tag">Optimization</span><span class="tag">ML</span></div>
+          </a>
+
+          <!-- Transformer -->
+          <a class="card" href="pdfs/Transformer.pdf" target="_blank" rel="noopener">
+            <div class="thumb">
+              <picture>
+                <source srcset="images/webp/Transformer.webp" type="image/webp"/>
+                <img src="images/Transformer.png" alt="Transformer project"/>
+              </picture>
+            </div>
+            <h4>Transformers for Speech & Language</h4>
+            <p>Attention-based models for speech classification and language modeling.</p>
+            <div class="tags"><span class="tag">Transformers</span><span class="tag">NLP</span><span class="tag">Attention</span></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <div class="container">
+      <div class="sec-head">
+        <h2 class="sec-title">Technical Skills</h2>
+        <p class="sec-sub">Technologies and tools I work with</p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill"><i class="fab fa-python"></i><span>Python</span></div>
+        <div class="skill"><i class="fab fa-java"></i><span>Java</span></div>
+        <div class="skill"><i class="fab fa-swift"></i><span>Swift</span></div>
+        <div class="skill"><i class="fas fa-code"></i><span>C/C++</span></div>
+        <div class="skill"><i class="fas fa-chart-bar"></i><span>R</span></div>
+        <div class="skill"><i class="fab fa-git-alt"></i><span>Git</span></div>
+        <div class="skill"><i class="fab fa-github"></i><span>GitHub</span></div>
+        <div class="skill"><i class="fas fa-database"></i><span>SQL</span></div>
+        <div class="skill"><i class="fab fa-figma"></i><span>Figma</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="sec-head">
+        <h2 class="sec-title">Let’s Connect!</h2>
+        <p class="sec-sub">Interested in working together or just want to say hello?</p>
+      </div>
+      <p class="soon">Contact form coming soon… 🚀</p>
+    </div>
+  </section>
+</body>
 </html>
