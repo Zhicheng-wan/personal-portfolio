@@ -88,7 +88,6 @@
         font-family: 'Space Grotesk', sans-serif;
         font-weight: 700;
         font-size: 1.25rem;
-        color: var(--primary);
       }
       .logo:hover {
         color: var(--primary-dark);
@@ -409,7 +408,7 @@
     <!-- Nav -->
     <nav>
       <div class="nav-wrap">
-        <a href="#top">Zhicheng&nbsp;Wang</a>
+        <a class="logo" href="#top">Zhicheng&nbsp;Wang</a>
         <ul class="nav-links">
           <li><a href="#projects">Projects</a></li>
           <li><a href="#skills">Skills</a></li>
@@ -486,7 +485,6 @@
               rel="noopener"
             >
               <div class="thumb">
-                <!-- Use your real screenshots; falls back to PNG if WebP not supported -->
                 <picture>
                   <source srcset="images/webp/Popmart.webp" type="image/webp" />
                   <img src="images/Popmart.png" alt="POP MART E-commerce App screenshot" />
@@ -504,6 +502,34 @@
                 <span class="tag">MongoDB</span>
                 <span class="tag">NextAuth</span>
                 <span class="tag">Admin</span>
+              </div>
+            </a>
+
+            <!-- Travelog Project -->
+            <a
+              class="card"
+              href="http://ec2-52-53-229-240.us-west-1.compute.amazonaws.com:3000/"
+              target="_blank"
+              rel="noopener"
+            >
+              <div class="thumb">
+                <!-- Replace with actual screenshot(s) from your images folder -->
+                <picture>
+                  <source srcset="images/webp/Travelog.webp" type="image/webp" />
+                  <img src="images/Travelog.png" alt="Travelog Project screenshot" />
+                </picture>
+              </div>
+              <h4>Travelog – All-in-One Travel Companion</h4>
+              <p>
+                A collaborative travel platform with drag-and-drop itinerary planning, real-time
+                essentials, and personalized recommendations. Features include calendar export,
+                interactive maps, and feedback from fellow travelers.
+              </p>
+              <div class="tags">
+                <span class="tag">Next.js</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">MongoDB</span>
+                <span class="tag">APIs</span>
               </div>
             </a>
 
